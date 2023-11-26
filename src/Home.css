@@ -1,0 +1,353 @@
+/* HEADER */
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.bg-header {
+    background-color: #4c8630;
+}
+
+.header {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.header-menu {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.header-menu a {
+    padding: 16px 0px;
+    display: inline-block;
+    position: relative;
+}
+
+@media (max-width: 800px) {
+    .header-menu {
+        gap: 20px;
+    }
+
+    .header-menu a {
+        background-color: #fff;
+        padding: 12px 16px;
+        border-radius: 4px;
+        color: black;
+    }
+
+    .header-menu a:hover {
+        background-color: #fff;
+    }
+
+    .header a:after {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-menu {
+        gap: 8px;
+    }
+
+    .header-menu a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    .header {
+        justify-content: center;
+    }
+}
+
+/* FOOTER */
+.footer {
+    background-color: #4c8630;
+    margin-top: 20px;
+    border-radius: 10px;
+    clear: both;
+    width: calc(100% - 100px);
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.containerFooter div img {
+    position: static;
+    height: 100%;
+    width: 100%;
+}
+
+.containerFooter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: auto;
+}
+
+.formulario {
+    margin-left: 200px;
+    margin-top: 180px;
+}
+
+.formulario input {
+    display: block;
+    margin-top: 50px;
+    width: 400px;
+    height: 60px;
+    background-color: #4c8630;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    padding: 5px 5px 5px 5px;
+}
+
+.footer h1 {
+    font-size: 70px;
+    font-weight: lighter;
+    color: #ffff;
+    text-align: center;
+    padding-top: 100px;
+}
+
+#nome::placeholder {
+    color: #ffff;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+#email::placeholder {
+    color: #ffff;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+#mensagem::placeholder {
+    color: #ffff;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+/* KAYAN */
+body {
+    font-family: 'Arial', sans-serif;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    margin: 0px;
+    background-color: #fff;
+}
+
+.container {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#divPai {
+    border-radius: 8px;
+}
+
+#divTitulo {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    background-color: #4C8630;
+    font-size: 19px;
+    color: #fff;
+    border-radius: 8px;
+}
+
+#titulo {
+    margin-right: 10px;
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+.cidade {
+    font-size: 32px;
+    text-align: center;
+    font-size: 75px;
+    font-weight: lighter;
+}
+
+.data {
+    font-size: 16px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+.container-temp {
+    display: flex;
+    justify-content: center;
+    background-color: #4C8630;
+    font-size: 250px;
+    font-weight: lighter;
+    padding: 30px;
+    color: #ffff;
+    border-radius: 8px;
+}
+
+#clima {
+    padding-top: 15px;
+    font-size: 32px;
+}
+
+#mediaGraus {
+    font-size: 22px;
+}
+
+/* KAUÊ */
+#dollar-price-container {
+    text-align: center;
+}
+
+#dollar-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.box {
+    margin-left: 150px;
+    background: linear-gradient(to right, #4C8630, #4C8630);
+    width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #4C8630;
+}
+
+input[type="number"]::placeholder {
+    color: #999;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    background-color: #4C8630;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #357f1a;
+}
+
+#dollar-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+#busca button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4C8630;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#busca button:hover {
+    background-color: #357f1a;
+}
+
+#busca input[type="text"] {
+    width: calc(100% - 130px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#busca input[type="text"]:focus {
+    outline: none;
+    border-color: #4C8630;
+}
+
+#busca button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4C8630;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#busca button:hover {
+    background-color: #357f1a;
+}
+
+#result-dollar,
+#result-real {
+    padding: 50px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#result-dollar::before,
+#result-real::before {
+    content: "Resultado: ";
+    font-weight: normal;
+}
+
+#result-dollar.error,
+#result-real.error {
+    color: red;
+}
+
+#result-dollar.error::before,
+#result-real.error::before {
+    content: "Erro: ";
+    font-weight: normal;
+}
