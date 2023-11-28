@@ -11,6 +11,7 @@ const Perguntas = () => {
   const [melhorPlanta, setMelhorPlanta] = useState('');
   const [quantidadeGraos, setQuantidadeGraos] = useState('');
   const [agrotoxico, setAgrotoxico] = useState('');
+  const [showHome, setShowHome] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,10 +37,14 @@ const Perguntas = () => {
     } else {
       setAgrotoxico('Agrotóxico B');
     }
+    setShowHome(true);
   };
 
   return (
     <div>
+      {showHome && (
+      <button onClick={() => setShowHome(false)} className='voltar'>Voltar</button>
+    )}
       <h1>Formulário de Perguntas</h1>
       <form onSubmit={handleSubmit}>
         <label>
