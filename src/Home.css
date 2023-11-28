@@ -32,7 +32,7 @@ img {
     justify-content: space-between;
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -161,7 +161,7 @@ body {
     font-family: 'Arial', sans-serif;
     align-items: center;
     justify-content: center;
-    height: 50vh;
+    height: 100vh;
     margin: 0px;
     background-color: #fff;
 }
@@ -169,53 +169,62 @@ body {
 .container {
     padding: 12px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     width: 100%;
 }
 
 #divPai {
     border-radius: 8px;
+    height: 50%;
 }
-
-#divTitulo {
-    padding: 5px;
-    display: flex;
+.card-footer{
+    display:flex;
+    align-items:center;
     justify-content: center;
-    background-color: #4C8630;
-    font-size: 19px;
-    color: #fff;
-    border-radius: 8px;
 }
-
-#titulo {
-    margin-right: 10px;
-    font-size: 40px;
-    font-weight: lighter;
+.input-group{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 20px;
 }
 
 .cidade {
     font-size: 32px;
-    text-align: center;
+    text-align: start;
     font-size: 75px;
     font-weight: lighter;
 }
 
 .data {
     font-size: 16px;
-    text-align: center;
+    text-align: start;
     font-size: 30px;
     font-weight: lighter;
 }
 
 .container-temp {
     display: flex;
-    justify-content: center;
-    background-color: #4C8630;
+    justify-content: end;
+
+    color: #4C8630;
     font-size: 250px;
     font-weight: lighter;
-    padding: 30px;
-    color: #ffff;
     border-radius: 8px;
+}
+.containerClima{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+.container-temp span {
+    color: #4C8630;
+}
+.temperatura{
+    color: #4C8630;
 }
 
 #clima {
@@ -227,31 +236,49 @@ body {
     font-size: 22px;
 }
 
+/* Estilos adicionais para a seção de clima */
+
+
 /* KAUÊ */
 #dollar-price-container {
     text-align: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    align-items: center
 }
 
 #dollar-price {
-    font-size: 18px;
+    font-size: 50px;
+    width: 40%;
     font-weight: bold;
-    color: #ffffff;
+    color:#fff
 }
 
 .box {
-    margin-left: 150px;
-    background: linear-gradient(to right, #4C8630, #4C8630);
-    width: 400px;
-    padding: 20px;
-    border-radius: 8px;
+width: 100%; 
+height: 50vh;
+display: flex;
+align-itemns: center;
+justify-content: center;
+margin-top: 50px;
+background-color: #4C8630;
+}
+.containerValor{
+    display:flex ;
+    flex-direction: column;
+    height: 100%;
+    align-itemns: center;
+justify-content: center;
 }
 
 input[type="number"] {
-    width: calc(100% - 20px);
+    
     padding: 8px;
     margin-bottom: 10px;
+
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 20px;
     box-sizing: border-box;
 }
 
@@ -268,25 +295,19 @@ button {
     padding: 10px 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-    background-color: #4C8630;
-    color: #fff;
+    background-color: #fff;
+    color: #4C8630;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #357f1a;
-}
-
-#dollar-price {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 20px;
+    color: white;
 }
 
 #busca button {
-    padding: 10px 20px;
+  
     border: none;
     border-radius: 4px;
     background-color: #4C8630;
@@ -300,7 +321,7 @@ button:hover {
 }
 
 #busca input[type="text"] {
-    width: calc(100% - 130px);
+
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -328,11 +349,11 @@ button:hover {
 
 #result-dollar,
 #result-real {
-    padding: 50px;
+    padding: 10px;
     margin-top: 10px;
     font-size: 18px;
     font-weight: bold;
-    color: #ffffff;
+    color: #fff;
 }
 
 #result-dollar::before,

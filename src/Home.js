@@ -2,88 +2,135 @@ import React, { useState, useEffect } from 'react';
 import './Home.css'; // Certifique-se de ajustar o caminho conforme necessário
 
 function Home() {
-  // State para armazenar valores convertidos
+  const [climaData, setClimaData] = useState(null);
   const [reaisInput, setReaisInput] = useState('');
   const [dollarsInput, setDollarsInput] = useState('');
   const [resultDollar, setResultDollar] = useState('');
   const [resultReal, setResultReal] = useState('');
+  const [cidadeInput, setCidadeInput] = useState('Ivaiporã');
 
-  // Função para obter o preço do dólar em tempo real
   async function getDollarPrice() {
     try {
       const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=brl');
       const data = await response.json();
       const dollarPrice = data.usd.brl;
-
-      // Exibe o preço do dólar
       const dollarPriceElement = document.getElementById('dollar-price');
-      dollarPriceElement.textContent = `Preço do dólar em tempo real: R$${dollarPrice.toFixed(2)}`;
-
+      dollarPriceElement.textContent = ` Dólar: R$${dollarPrice.toFixed(2)}`;
       return dollarPrice;
     } catch (error) {
       console.error('Erro ao obter o preço do dólar:', error);
     }
   }
 
-  // Função para converter reais para dólares
+  async function fetchClimaData(nomeCidade) {
+    try {
+      const apiKey = '64ed82577ced7f69cb1687f0ce536131'; // Substitua pela sua chave de API
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${nomeCidade}&appid=${apiKey}&units=metric`);
+      const data = await response.json();
+      setClimaData(data);
+    } catch (error) {
+      console.error('Erro ao obter dados do clima:', error);
+    }
+  }
+
   async function convertToDollars() {
     const dollarPrice = await getDollarPrice();
-
     if (!isNaN(reaisInput)) {
       const dollars = reaisInput / dollarPrice;
       setResultDollar(`$${dollars.toFixed(2)} (USD)`);
     } else {
       setResultDollar('Insira um valor válido em reais.');
     }
+    await fetchClimaData(reaisInput);
+  }
+  function construirData(d) {
+    const dias = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+    const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    const dia = dias[d.getDay()];
+    const data = d.getDate();
+    const mes = meses[d.getMonth()];
+    const ano = d.getFullYear();
+    return `${dia}, ${data} ${mes} ${ano}`;
   }
 
-  // Função para converter dólares para reais
+  async function convertToDollars() {
+    const dollarPrice = await getDollarPrice();
+    if (!isNaN(reaisInput)) {
+      const dollars = reaisInput / dollarPrice;
+      setResultDollar(`$${dollars.toFixed(2)} (USD)`);
+    } else {
+      setResultDollar('Insira um valor válido em reais.');
+    }
+    await fetchClimaData(cidadeInput);
+  }
+  
   async function convertToReais() {
     const dollarPrice = await getDollarPrice();
-
     if (!isNaN(dollarsInput)) {
       const reais = dollarsInput * dollarPrice;
       setResultReal(`R$${reais.toFixed(2)} (BRL)`);
     } else {
       setResultReal('Insira um valor válido em dólares.');
     }
+    await fetchClimaData(cidadeInput);
   }
 
-  // Chame getDollarPrice() para exibir o preço do dólar assim que a página carregar
   useEffect(() => {
     getDollarPrice();
   }, []);
-
   return (
     <div>
 
-      <header className="bg-header">
-        <div className="header">
-          <a href="/">
-            <img src="./svgs/plantar.svg" alt="" />
-          </a>
-          <nav>
-            <ul className="header-menu">
-              <li><a href="/">Inicio</a></li>
-              <li><a href="/">Sobre Nós</a></li>
-              <li><a href="/">Como Funciona</a></li>
-              <li><a href="/">Contato</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      
 
       {/* CONTEÚDO PRINCIPAL */}
       <div className="container">
         {/* ARTIGO API CLIMA TEMPO */}
         <div id="divPai">
-          {/* ... (seu conteúdo do clima tempo) */}
+        
+           
+            {climaData && climaData.sys && (
+              <div className='containerClima'>
+                <div>
+                <div className="cidade">{`${climaData.name}, ${climaData.sys.country}`}</div>
+                <div className="data">{construirData(new Date())}</div>
+                </div>
+                <div className="container-temp">
+    {climaData && climaData.main && (
+      <>
+        <div className="temperatura">{`${Math.round(climaData.main.temp)}`}</div>
+        <span>&deg;C</span>
+      </>
+    )}
+  </div>
+              </div>
+              
+            
+          )}
+          <div className="card-footer" id="busca">
+          <div className="input-group">
+          <input
+  type="text"
+  className="form-control bg-light"
+  placeholder="Digite o nome da cidade"
+  aria-label="Recipient's username"
+  aria-describedby="button-addon2"
+  onChange={(e) => setCidadeInput(e.target.value)}
+/>
+              <div className="input-group-append">
+                <button className="btn btn-outline-warning text-dark" type="button" id="button-addon2" onClick={convertToDollars}>
+                  <i className=""> Buscar</i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* ARTIGO API DOLAR */}
         <div className="box">
           <div id="dollar-price-container">
-            <p id="dollar-price">Preço do dólar em tempo real: Carregando...</p>
+            <p id="dollar-price"> Dólar: Carregando...</p>
+           <div className='containerValor'>
             <input
               type="number"
               id="reais-input"
@@ -94,7 +141,6 @@ function Home() {
             <button onClick={convertToDollars}>Converter para USD</button>
             <p id="result-dollar">{resultDollar}</p>
 
-            <hr />
 
             <input
               type="number"
@@ -106,11 +152,11 @@ function Home() {
             <button onClick={convertToReais}>Converter para BRL</button>
             <p id="result-real">{resultReal}</p>
           </div>
+          </div>
         </div>
       </div>
 
-      {/* FOOTER */}
-      <footer className="footer">
+      {/* <footer className="footer">
         <h1 className="">CONTATO</h1>
         <div className="containerFooter">
           <div className="formulario">
@@ -124,7 +170,7 @@ function Home() {
             <img src="./imgs/plantar 2.png" alt="" />
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
