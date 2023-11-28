@@ -1,5 +1,5 @@
 // Em Welcome.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Home from './Home'; // Importe o componente Home
 import { HiOutlineExclamation, IconName } from "react-icons/hi";
@@ -14,7 +14,15 @@ function Welcome() {
   });
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [error, setError] = useState('');
+  useEffect(() => {
+    // Define o título da aba para "FarmWise"
+    document.title = "FarmWise";
 
+    const favicon = document.querySelector("link[rel='icon']") || document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = '/icon.png';  // Substitua com o caminho correto para o seu ícone
+    document.head.appendChild(favicon);
+  }, []); 
   const handleToggleView = () => {
     setIsLogin(!isLogin);
     setError(''); // Limpar mensagens de erro ao alternar entre login e cadastro

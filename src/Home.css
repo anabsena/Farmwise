@@ -1,4 +1,10 @@
 /* HEADER */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
@@ -167,15 +173,15 @@ body {
 }
 
 .container {
-    padding: 12px;
+
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
 #divPai {
-    border-radius: 8px;
-    height: 50%;
+    height: 50vh;
+    width:100%;
 }
 .card-footer{
     display:flex;
@@ -217,7 +223,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 140%;
 
 }
 .container-temp span {
@@ -247,6 +253,10 @@ body {
     width: 100%;
     align-items: center
 }
+.hidden {
+    visibility: hidden
+  }
+  
 
 #dollar-price {
     font-size: 50px;
@@ -256,14 +266,39 @@ body {
 }
 
 .box {
-width: 100%; 
-height: 50vh;
-display: flex;
-align-itemns: center;
-justify-content: center;
-margin-top: 50px;
-background-color: #4C8630;
-}
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #4C8630;
+  }
+  .perguntas{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #4C8630;
+    color: #fff
+  }
+  .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+     /* Ajuste a altura da ondulação conforme necessário */
+    background: #4C8630;
+    clip-path: url(#waveClip);
+  }
+  
+  .svg-clip {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
 .containerValor{
     display:flex ;
     flex-direction: column;
@@ -291,7 +326,7 @@ input[type="number"]::placeholder {
     color: #999;
 }
 
-button {
+.converter button {
     padding: 10px 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 4px;
@@ -301,7 +336,7 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.converter button:hover {
     background-color: #357f1a;
     color: white;
 }
